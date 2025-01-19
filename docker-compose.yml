@@ -1,0 +1,41 @@
+services:
+  # microservices.service1:
+  #   image: ${DOCKER_REGISTRY-}microservicesservice1
+  #   build:
+  #     context: .
+  #     dockerfile: Microservices.Service1/Dockerfile
+  service-postgre-database:
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - ./apps/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres-database
+  # service-mysql-database:
+  #   image: mysql:8.0.40
+  #   restart: always
+  #   ports:
+  #     - 3306:3306
+  #   volumes:
+  #     - ./apps/mysql:/var/lib/mysql
+  #   environment:
+  #     - MYSQL_USER=mysql
+  #     - MYSQL_PASSWORD=mysql
+  #     - MYSQL_ROOT_PASSWORD=mysql
+  #     - MYSQL_DATABASE=mysql 
+  rabbit-mq:
+    image: rabbitmq:management
+    container_name: 'rabbitmq'
+    ports:
+        - 5672:5672
+        - 15672:15672
+    volumes:
+      - ./apps/rabbitmq/data/:/var/lib/rabbitmq/
+      - ./apps/rabbitmq/log/:/var/log/rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
