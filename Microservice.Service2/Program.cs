@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
-builder.Services.AddSingleton(new SingeltoneDatabase());
+builder.Services.AddSingleton(new SingltoneDatabase());
 builder.Services.AddMassTransit(busConfiguration =>
 {
     busConfiguration.SetKebabCaseEndpointNameFormatter();
@@ -35,12 +35,12 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-app.MapGet("/get-users", (SingeltoneDatabase db) =>
+app.MapGet("/get-users", (SingltoneDatabase db) =>
 {
     return db.GetUsersEvents;
 });
 
-app.MapGet("/add-users", (SingeltoneDatabase db) =>
+app.MapGet("/add-users", (SingltoneDatabase db) =>
 {
     return db.AddUserEvents;
 });

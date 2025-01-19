@@ -4,7 +4,7 @@ using Microservices.Common.Contracts;
 
 namespace Microservices.Service2.Consumers;
 
-public class GetUsersConsumer(SingeltoneDatabase db) : IConsumer<GetUsersEvent>
+public class GetUsersConsumer(SingltoneDatabase db) : IConsumer<GetUsersEvent>
 {
     public Task Consume(ConsumeContext<GetUsersEvent> context)
     {

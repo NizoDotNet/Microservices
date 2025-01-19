@@ -2,7 +2,7 @@
 
 namespace Microservice.Service2;
 
-public class SingeltoneDatabase
+public class SingltoneDatabase
 {
     public List<AddUserEvent> AddUserEvents { get; } = [];
     public List<GetUsersEvent> GetUsersEvents { get; } = [];
